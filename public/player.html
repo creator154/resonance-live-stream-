@@ -1,1 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Player</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body style="margin:0;background:black">
 
+<video id="video" controls autoplay style="width:100%;height:100vh"></video>
+
+<script>
+  const src = new URLSearchParams(window.location.search).get("src");
+  const video = document.getElementById("video");
+
+  if (!src) alert("No stream URL");
+
+  if (Hls.isSupported()) {
+    const hls = new Hls();
+    hls.loadSource(src);
+    hls.attachMedia(video);
+  } else {
+    video.src = src;
+  }
+</script>
+
+</body>
+</html>

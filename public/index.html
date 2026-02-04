@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Generator</title>
+</head>
+<body>
+  <h3>Paste M3U8 URL</h3>
+
+  <input id="m3u8" style="width:90%" placeholder="https://....m3u8">
+  <br><br>
+
+  <button onclick="go()">Generate Live</button>
+
+  <script>
+    function go() {
+      const url = document.getElementById("m3u8").value;
+      if (!url) return alert("Paste M3U8 first");
+      window.location.href = "/player.html?src=" + encodeURIComponent(url);
+    }
+  </script>
+</body>
+</html>
